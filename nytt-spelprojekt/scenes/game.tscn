@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://dfuhdlpei6p58"]
 
+[ext_resource type="Script" uid="uid://bg8rhx1c2iu3x" path="res://scripts/game_manager.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://dfd4et5tgqalw" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://b7thb1m1fucxq" path="res://assets/sprites/world_tileset.png" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cnq3qprhr1wm1" path="res://scenes/platform.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://5yxkachnaxxe" path="res://scenes/coin.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://cldhce5txpfnl" path="res://scenes/killzone.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://cajns3hwa2ycf" path="res://scenes/slime.tscn" id="6_p57ef"]
+[ext_resource type="FontFile" uid="uid://cdygmavrl1252" path="res://assets/fonts/PixelOperator8.ttf" id="7_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -215,6 +217,10 @@ _data = {
 
 [node name="Game" type="Node2D" unique_id=1885919335]
 
+[node name="GameManager" type="Node" parent="." unique_id=1939883087]
+unique_name_in_owner = true
+script = ExtResource("1_gee14")
+
 [node name="TileMap" type="TileMap" parent="." unique_id=370086683]
 tile_set = SubResource("TileSet_wxe1b")
 format = 2
@@ -281,5 +287,38 @@ root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_iywne")
 autoplay = &"Move"
 
-[node name="Slime" parent="." unique_id=522760396 instance=ExtResource("6_p57ef")]
+[node name="Enemies" type="Node" parent="." unique_id=938171191]
+
+[node name="Slime" parent="Enemies" unique_id=522760396 instance=ExtResource("6_p57ef")]
 position = Vector2(522, 41)
+
+[node name="Text" type="Node" parent="." unique_id=2057506052]
+
+[node name="Label" type="Label" parent="Text" unique_id=2003324272]
+offset_left = -103.0
+offset_right = 69.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("7_u5sy4")
+theme_override_font_sizes/font_size = 8
+text = "Space to jump"
+
+[node name="Label2" type="Label" parent="Text" unique_id=1240000038]
+offset_left = 359.0
+offset_top = -14.0
+offset_right = 531.0
+offset_bottom = 9.0
+theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("7_u5sy4")
+theme_override_font_sizes/font_size = 8
+text = "Falling hurts"
+
+[node name="Label3" type="Label" parent="Text" unique_id=372805709]
+offset_left = 705.0
+offset_top = -94.0
+offset_right = 877.0
+offset_bottom = -71.0
+theme_override_colors/font_color = Color(0.011764706, 0.14901961, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("7_u5sy4")
+theme_override_font_sizes/font_size = 8
+text = "Almost there"
